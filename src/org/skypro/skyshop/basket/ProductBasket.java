@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class ProductBasket {
     private final Product[] products = new Product[5];
-   private int quantityProduct = 0;
+    private int quantityProduct = 0;
 
     public void addProduct(Product titleProduct) {
         if (quantityProduct == products.length) {
@@ -15,19 +15,18 @@ public class ProductBasket {
             products[quantityProduct] = titleProduct;
             quantityProduct++;
             System.out.println("Продукт в корзину добавлен");
-             }
+        }
 
     }
 
     public int calculateCostBasket() {
         int summa = 0;
-        for (Product variant : products) {
-            try {
-                variant.getNameProduct();
-            } catch (NullPointerException e) {
-                break;
+        for (Product product : products) {
+            if (product != null) {
+                summa += product.getCostProduct();
+            } else {
+                return summa;
             }
-            summa += variant.getCostProduct();
         }
         return summa;
     }
@@ -53,12 +52,12 @@ public class ProductBasket {
             return false;
         }
         for (int i = 0; i < quantityProduct; i++) {
-                if (product.trim().equalsIgnoreCase(products[i].getNameProduct().trim())) {
-                    return true;
-                }
+            if (product.trim().equalsIgnoreCase(products[i].getNameProduct().trim())) {
+                return true;
             }
-            return false;
-         }
+        }
+        return false;
+    }
 
     public void clearingBasket() {
         quantityProduct = 0;
