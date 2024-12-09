@@ -117,6 +117,5 @@ public class App {
         System.out.println("Стоимость пустой корзины равна: " + basket.calculateCostBasket() + " рублей");
         printTitle("10. Поиск товара по имени в пустой корзине");
         searchProductBasket(product3);
-
     }
 }
