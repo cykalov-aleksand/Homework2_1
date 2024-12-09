@@ -81,7 +81,7 @@ public class App {
         String product3 = "Стиральный порошок";
         String product4 = "Туалетная бумага";
         String product5 = "Пена для бритья";
-        String product6 = "Хлеб";
+        String product6 = "Молоко";
 
         printTitle("ДОМАШНЕЕ ЗАДАНИЕ");
         printTitle("Демонстрация классов");
