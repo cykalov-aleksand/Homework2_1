@@ -23,7 +23,7 @@ public class ProductBasket {
         int summa = 0;
         for (Product product : products) {
             if (product != null) {
-                summa += product.getCostProduct();
+                summa += product.getPrice();
             } else {
                 return summa;
             }
@@ -32,13 +32,19 @@ public class ProductBasket {
     }
 
     public void printContentBasket() {
+        int counterIsSpecial = 0;
         if (quantityProduct == 0) {
             System.out.println("В корзине пусто");
         } else {
+            System.out.printf("\n%20s%23s%10s%28s", "Продукт", "Цена", "Скидка", "Итоговая цена\n");
             for (int i = 0; i < quantityProduct; i++) {
+                if (products[i].isSpecial()) {
+                    counterIsSpecial++;
+                }
                 System.out.println(products[i]);
             }
-            System.out.printf("%15s%20d%5s", "Итого:", calculateCostBasket(), " руб");
+            System.out.printf("%20s%20d%5s", "Итого:", calculateCostBasket(), " руб");
+            System.out.printf("\n%20s%10d%5s", "Специальных товаров:", counterIsSpecial, " наименования(е)");
         }
     }
 
