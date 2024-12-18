@@ -2,10 +2,8 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.DiscountedProduct;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.product.*;
+import org.skypro.skyshop.product.Article.Article;
 
 public class App {
     static Product[] products = {
@@ -25,8 +23,26 @@ public class App {
             new DiscountedProduct("Стиральный порошок", 780, 15),
             new DiscountedProduct("Пена для бритья", 455, 15),
             new FixPriceProduct("Хлеб ржаной"),
+            new FixPriceProduct("Хлеб Бородинский"),
             new FixPriceProduct("Батон нарезной"),
             new FixPriceProduct("Туалетная бумага")
+    };
+    static Article[] articles = {
+            new Article("Конфеты", "Конфеты Cладкоежка"),
+            new Article("Макароны", "Макароны Макфа"),
+            new Article("Пельмени", "Пельмени Рузские"),
+            new Article("Масло", "Масло Вологодское"),
+            new Article("Сосиски", "Сосиски Микояновские"),
+            new Article("Кетчуп", "Кетчуп острый"),
+            new Article("Майонез", "Майонез Провансаль"),
+            new Article("Молоко", "Молоко Рузское"),
+            new Article("Кефир", "Рузский"),
+            new Article("Сметана", "Сметана домашняя"),
+            new Article("Яйца", "Яйца куринные первой категории"),
+            new Article("Мыло", "Мыло Palmolive"),
+            new Article("Хлеб ржаной", "Хлебобулчное изделие"),
+            new Article("Хлеб Бородинский", "Хлебобулочное изделие"),
+            new Article("Батон нарезной", "Батон нарезной")
     };
     static ProductBasket basket = new ProductBasket();
 
@@ -117,5 +133,52 @@ public class App {
         System.out.println("Стоимость пустой корзины равна: " + basket.calculateCostBasket() + " рублей");
         printTitle("10. Поиск товара по имени в пустой корзине");
         searchProductBasket(product3);
+
+
+        printTitle("ДОМАШНЕЕ ЗАДАНИЕ Полиморфизм. Интерфейсы");
+        System.out.println("1. Создали один объект типа SearchEngine c пустым полем массива размером не менее (Product + Article)");
+        int size = products.length + articles.length;
+        System.out.println("Итого: мы выбрали массив равный " + size + " если же мы далее планируем расширять продуктовую базу, размер массива также необходимо увеличивать");
+        SearchEngine searchEngeni = new SearchEngine(size);
+        System.out.println("2. Привели тип объекта products к типу Searhable  и занесли элементы в объект searchEngeni  ");
+        Searchable[] typeConversion = products;
+        searchEngeni.add(typeConversion);
+        System.out.println("3. Занесли объекты article в объект searchEngeni  ");
+        searchEngeni.add(articles);
+        printTitle("4. Проводим проверку заполнения объекта searchEngeni");
+        for (Searchable x : searchEngeni.getSearchable()) {
+            System.out.println(x);
+        }
+
+        String searchOption1 = "хлеб";
+        String searchOption2 = "майонез";
+        String searchOption3 = "ма";
+        int sequenceNumber = 0;
+        printTitle("5. Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 + " ");
+        for (Searchable x : searchEngeni.search(searchOption1)) {
+            try {
+                System.out.println((++sequenceNumber) + "." + x.getStringRepresentation());
+            } catch (NullPointerException e) {
+                System.out.printf("%7s%20s%10s%20s", "Имя ", "NULL", " — тип - ", "NULL\n");
+            }
+        }
+        sequenceNumber = 0;
+        printTitle("6. Продемонстрировали функциональность поиска при вводе строки - " + searchOption2 + " ");
+        for (Searchable x : searchEngeni.search(searchOption2)) {
+            try {
+                System.out.println((++sequenceNumber) + "." + x.getStringRepresentation());
+            } catch (NullPointerException e) {
+                System.out.printf("%7s%20s%10s%20s", "Имя ", "NULL", " — тип - ", "NULL\n");
+            }
+        }
+        sequenceNumber = 0;
+        printTitle("7. Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 + " ");
+        for (Searchable x : searchEngeni.search(searchOption3)) {
+            try {
+                System.out.println((++sequenceNumber) + "." + x.getStringRepresentation());
+            } catch (NullPointerException e) {
+                System.out.printf("%7s%20s%10s%20s", "Имя ", "NULL", " — тип - ", "NULL\n");
+            }
+        }
     }
 }
