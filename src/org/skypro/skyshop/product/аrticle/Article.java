@@ -1,4 +1,4 @@
-package org.skypro.skyshop.product.Article;
+package org.skypro.skyshop.product.аrticle;
 
 import org.skypro.skyshop.product.Searchable;
 

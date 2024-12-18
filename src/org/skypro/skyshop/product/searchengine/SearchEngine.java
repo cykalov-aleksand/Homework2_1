@@ -1,4 +1,6 @@
-package org.skypro.skyshop.product;
+package org.skypro.skyshop.product.searchengine;
+
+import org.skypro.skyshop.product.Searchable;
 
 public class SearchEngine {
     private Searchable[] searchable;

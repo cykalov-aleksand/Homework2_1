@@ -3,7 +3,9 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.*;
-import org.skypro.skyshop.product.Article.Article;
+import org.skypro.skyshop.product.searchengine.SearchEngine;
+import org.skypro.skyshop.product.simpleprodct.SimpleProduct;
+import org.skypro.skyshop.product.аrticle.Article;
 
 public class App {
     static Product[] products = {
