@@ -172,7 +172,7 @@ public class App {
             }
         }
         sequenceNumber = 0;
-        printTitle("7. Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 + " ");
+        System.out.println("7. Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 + ", на предмет полного заполнения массива поиска \n");
         for (Searchable x : searchEngeni.search(searchOption3)) {
             try {
                 System.out.println((++sequenceNumber) + "." + x.getStringRepresentation());
