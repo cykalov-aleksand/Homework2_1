@@ -1,4 +1,4 @@
-package org.skypro.skyshop.product;
+package org.skypro.skyshop.product.product;
 
 public class DiscountedProduct extends Product {
     private int basePrice;
@@ -6,6 +6,12 @@ public class DiscountedProduct extends Product {
 
     public DiscountedProduct(String nameProduct, int basePrice, int discountProcent) {
         super(nameProduct);
+        if (basePrice <= 0) {
+            throw new IllegalArgumentException("ОШИБКА В ЦЕНЕ ТОВАРА " + super.getNameProduct());
+        }
+        if (discountProcent < 0 || discountProcent > 100) {
+            throw new IllegalArgumentException("ОШИБКА В % СКИДКИ " + super.getNameProduct());
+        }
         this.basePrice = basePrice;
         this.discountProcent = discountProcent;
     }
@@ -17,8 +23,7 @@ public class DiscountedProduct extends Product {
 
     @Override
     public String toString() {
-        return String.format("%20s%20d%5s%5d%3s%23d%4s", super.getNameProduct(), basePrice, " руб", discountProcent, "%", getPrice(), "руб");
-
+        return String.format("%30s%20d%5s%5d%3s%23d%4s", super.getNameProduct(), basePrice, " руб", discountProcent, "%", getPrice(), "руб");
     }
 
     @Override
