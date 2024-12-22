@@ -116,7 +116,7 @@ public class App {
             System.out.println("1. В классы Product и его наследники ввели проверку корректности ввода данных в объекты.");
             System.out.println("2. Провели демонстрацию корректности ввода данных без ошибки для удобства проверки данных при вводе ошибки в программу.");
             productInformation.printProductsInStore();
-            System.out.println("3. 4. реализовали метод getSearchTerm(String search) в классе Searchable и создали исключение BestResultNotFound. ");
+            System.out.println("3. 4. Реализовали метод getSearchTerm(String search) в классе Searchable и создали исключение BestResultNotFound. ");
             printTitle("5.1 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption4);
             System.out.println();
             demonstrateTheMethod2(searchEngeni, searchOption4);
