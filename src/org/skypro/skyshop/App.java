@@ -124,7 +124,7 @@ public class App {
             System.out.println();
             demonstrateTheMethod2(searchEngeni, searchOption5);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage() + "проведите корректировку вводимых данных");
+            System.out.println(e.getMessage() + "  проведите корректировку вводимых данных");
 
         }
     }
