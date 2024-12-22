@@ -21,7 +21,7 @@ public class ProductInformation {
             new SimpleProduct("Кефир", 80),
             new SimpleProduct("Сметана", 210),
             new SimpleProduct("Яйца", 100),
-            new DiscountedProduct("Мыло", 23, 11),
+            new DiscountedProduct("Мыло", 23, 10),
             new DiscountedProduct("Шампунь", 888, 10),
             new DiscountedProduct("Стиральный порошок", 780, 15),
             new DiscountedProduct("Пена для бритья", 455, 15),
