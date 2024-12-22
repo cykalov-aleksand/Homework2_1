@@ -8,6 +8,7 @@ public class SimpleProduct extends Product {
         if (price <= 0) {
             throw new IllegalArgumentException("ОШИБКА В ЦЕНЕ ТОВАРА  " + super.getNameProduct());
         }
+        this.price = price;
     }
 
     @Override
