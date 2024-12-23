@@ -1,4 +1,4 @@
-package org.skypro.skyshop.product.аrticle;
+package org.skypro.skyshop.product.article;
 
 import org.skypro.skyshop.product.Searchable;
 
@@ -14,17 +14,17 @@ public class Article implements Searchable {
 
     @Override
     public String toString() {
-        return (String.format("%20s",titleAtribute) + "\n" + String.format("%27s",textAtribute) );
+        return (String.format("%20s", titleAtribute) + "\n" + String.format("%27s", textAtribute));
     }
 
 
     @Override
     public String getSearchTemp() {
-              return toString();
+        return toString();
     }
 
     @Override
     public String getContentType() {
-                return "ARTICLE";
-         }
+        return "ARTICLE";
+    }
 }
