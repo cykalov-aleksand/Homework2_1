@@ -80,7 +80,6 @@ public class App {
         demonstrateTheMethod(searchEngeni, searchOption2);
         System.out.println("7. Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 + ", на предмет полного заполнения массива поиска \n");
         demonstrateTheMethod(searchEngeni, searchOption3);
-
     }
 
     static void demonstrateTheMethod(SearchEngine object, String line) {
@@ -100,7 +99,6 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     public static void main(String[] args) {
