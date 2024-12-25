@@ -5,6 +5,8 @@ import org.skypro.skyshop.exceptions.BestResultNotFound;
 import org.skypro.skyshop.product.*;
 import org.skypro.skyshop.product.searchengine.SearchEngine;
 
+import java.util.ArrayList;
+
 public class App {
 
     static void printTitle(String title) {
@@ -37,7 +39,7 @@ public class App {
         productInformation.searchProductAddBasket(product4);
         System.out.println("Добавили 5 продукт: " + product5);
         productInformation.searchProductAddBasket(product5);
-        printTitle("2. Добавление продукта в заполненную корзину, в которой нет свободного места");
+        //  printTitle("2. Добавление продукта в заполненную корзину, в которой нет свободного места");
         System.out.println("Добавили 6 продукт: " + product6);
         productInformation.searchProductAddBasket(product6);
         printTitle("3. Печать содержимого корзины с несколькими товарами");
@@ -60,11 +62,10 @@ public class App {
 
     static void completeTask2(ProductInformation productInformation, SearchEngine searchEngeni) {
         printTitle("ДОМАШНЕЕ ЗАДАНИЕ Полиморфизм. Интерфейсы");
-        System.out.println("1. Создали один объект типа SearchEngine c пустым полем массива размером не менее (Product + Article)");
-        System.out.println("Итого: мы выбрали массив равный " + searchEngeni.getSearchable().length + " если же мы далее планируем расширять продуктовую базу, размер массива также необходимо увеличивать");
+        System.out.println("1. Создали один объект типа SearchEngine c пустым списком ");
+        System.out.println("Итого: мы имеем список размерностью изначально равной " + searchEngeni.getSearchable().size());
         System.out.println("2. Привели тип объекта products к типу Searhable  и занесли элементы в объект searchEngeni  ");
-        Searchable[] typeConversion = productInformation.products;
-        searchEngeni.add(typeConversion);
+        searchEngeni.add(productInformation.products);
         System.out.println("3. Занесли объекты article в объект searchEngeni  ");
         searchEngeni.add(productInformation.articles);
         printTitle("4. Проводим проверку заполнения объекта searchEngeni");
@@ -82,14 +83,27 @@ public class App {
         demonstrateTheMethod(searchEngeni, searchOption3);
     }
 
+    static void completeTask3(ProductInformation productInformation, SearchEngine searchEngeni) {
+        String searchOption4 = "майонез";
+        String searchOption5 = "apple";
+        printTitle("ДОМАШНЕЕ ЗАДАНИЕ Исключение в JAVA");
+        System.out.println("1. В классы Product и его наследники ввели проверку корректности ввода данных в объекты.");
+        System.out.println("2. Провели демонстрацию корректности ввода данных без ошибки для удобства проверки данных при вводе ошибки в программу.");
+        productInformation.printProductsInStore();
+        System.out.println("3. 4. Реализовали метод getSearchTerm(String search) в классе Searchable и создали исключение BestResultNotFound. ");
+        printTitle("5.1 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption4);
+        System.out.println();
+        demonstrateTheMethod2(searchEngeni, searchOption4);
+        printTitle("5.2 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption5);
+        System.out.println();
+        demonstrateTheMethod2(searchEngeni, searchOption5);
+
+    }
+
     static void demonstrateTheMethod(SearchEngine object, String line) {
         int sequenceNumber = 0;
         for (Searchable x : object.search(line)) {
-            try {
-                System.out.println((++sequenceNumber) + "." + x.getStringRepresentation());
-            } catch (NullPointerException e) {
-                System.out.printf("%7s%20s%10s%20s", "Имя ", "NULL", " — тип - ", "NULL\n");
-            }
+            System.out.println((++sequenceNumber) + "." + x.getStringRepresentation());
         }
     }
 
@@ -101,30 +115,62 @@ public class App {
         }
     }
 
+    static void printDeleteProductBasket(ProductInformation object, String line) {
+        if (object.basket.deleteProduct(line).isEmpty()) {
+            System.out.println("Список удаленных продуктов пуст (проверьте правильность ввода строки продукта удаления)");
+        } else {
+            for (Searchable x : object.basket.deleteProduct(line)) {
+                System.out.println(x);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         try {
             ProductInformation productInformation = new ProductInformation();
-            int size = productInformation.products.length + productInformation.articles.length;
-            SearchEngine searchEngeni = new SearchEngine(size);
+            SearchEngine searchEngeni = new SearchEngine();
             completeTask1(productInformation);
             completeTask2(productInformation, searchEngeni);
-            String searchOption4 = "майонез";
-            String searchOption5 = "apple";
-            printTitle("ДОМАШНЕЕ ЗАДАНИЕ Исключение в JAVA");
-            System.out.println("1. В классы Product и его наследники ввели проверку корректности ввода данных в объекты.");
-            System.out.println("2. Провели демонстрацию корректности ввода данных без ошибки для удобства проверки данных при вводе ошибки в программу.");
-            productInformation.printProductsInStore();
-            System.out.println("3. 4. Реализовали метод getSearchTerm(String search) в классе Searchable и создали исключение BestResultNotFound. ");
-            printTitle("5.1 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption4);
+            completeTask3(productInformation, searchEngeni);
+            printTitle("ДОМАШНЕЕ ЗАДАНИЕ Java Collections Framework: List");
+            System.out.println("1.1 Поменяли внутреннюю структуру класса ProductBasket заменили массив на список типа  LinkedList");
+            System.out.println("1.2 Убедились что теперь мы можем в корзину добавлять условно бесконечное количество продуктов");
+            ArrayList<String> productBasket = new ArrayList<>();
+            productBasket.add("Хлеб ржаной");
+            productBasket.add("Кетчуп");
+            productBasket.add("Стиральный порошок");
+            productBasket.add("Туалетная бумага");
+            productBasket.add("Пена для бритья");
+            productBasket.add("Молоко");
+            printTitle("1. Добавление продукта в корзину");
+            for (int element = 0; element < productBasket.size(); element++) {
+                System.out.println("Добавили " + (element + 1) + " продукт: " + productBasket.get(element));
+                productInformation.searchProductAddBasket(productBasket.get(element));
+            }
+            System.out.println("2. Добавили метод public deleteProduct(String line), который по переданному имени продукта удаляет все" +
+                    " продукты с таким именем из корзины");
+            printTitle("2.1 Продемонстрируем работу метода. Для этого распечатаем содержимое корзины.");
+            productInformation.basket.printContentBasket();
             System.out.println();
-            demonstrateTheMethod2(searchEngeni, searchOption4);
-            printTitle("5.2 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption5);
-            System.out.println();
-            demonstrateTheMethod2(searchEngeni, searchOption5);
+            String productDelete = "молоко";
+            System.out.println("\n 2.1 Удалим из корзины один продукт \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
+            printDeleteProductBasket(productInformation, productDelete);
+            printTitle("2.2. Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
+            productInformation.basket.printContentBasket();
+            productDelete = "пенt для бритья";
+            System.out.println("\n 2.3 Удалим из корзины продукт введенный с ошибкой \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.\n");
+            printDeleteProductBasket(productInformation, productDelete);
+            printTitle("2.4. Вывели содержимое корзины на экран.");
+            productInformation.basket.printContentBasket();
+            searchEngeni.clearSearchEngine();
+            System.out.println("\n3. Продемонстрируем использование измененного метода search для чего повторим вывод домашнего задания \"Полиморфизм. Интерфейсы.\" на печать");
+            System.out.println("Для повторного корректного выполнения домашнего задания \"Полиморфизм. Интерфейсы.\" " +
+                    "произвел предварительно очистку списка объекта searchEngine дополнительным методом clearSearchEngine()  ");
+            searchEngeni.clearSearchEngine();
+            completeTask2(productInformation, searchEngeni);
+            System.out.println("\nУбедились что программа отрабатывает согласно условия задания.");
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage() + "  проведите корректировку вводимых данных");
-
         }
     }
 }
-//Для контроля работы прерывания необходимо вводить ошибку в класс ProductInformation находящийся по адресу org.skypro.skyshop.product;
