@@ -6,7 +6,6 @@ import java.util.*;
 
 public class ProductBasket {
     LinkedList<Product> products = new LinkedList<>();
-    // private final Product[] products = new Product[5];
     private int quantityProduct = 0;
 
     public void addProduct(Product titleProduct) {

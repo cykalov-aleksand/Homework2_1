@@ -3,6 +3,7 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.exceptions.BestResultNotFound;
 import org.skypro.skyshop.product.*;
+import org.skypro.skyshop.product.product.Product;
 import org.skypro.skyshop.product.searchengine.SearchEngine;
 
 import java.util.ArrayList;
@@ -116,14 +117,16 @@ public class App {
     }
 
     static void printDeleteProductBasket(ProductInformation object, String line) {
-        if (object.basket.deleteProduct(line).isEmpty()) {
-            System.out.println("Список удаленных продуктов пуст (проверьте правильность ввода строки продукта удаления)");
-        } else {
-            for (Searchable x : object.basket.deleteProduct(line)) {
-                System.out.println(x);
-            }
+        int index = 0;
+        for (Product element : object.basket.deleteProduct(line)) {
+            index++;
+            System.out.println(element);
+        }
+        if (index == 0) {
+            System.out.println("Список пуст, проверьте правильность ввода строки удаления");
         }
     }
+
 
     public static void main(String[] args) {
         try {
