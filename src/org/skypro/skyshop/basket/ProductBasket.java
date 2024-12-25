@@ -6,12 +6,8 @@ import java.util.*;
 
 public class ProductBasket {
     LinkedList<Product> products = new LinkedList<>();
-    private int quantityProduct = 0;
-
     public void addProduct(Product titleProduct) {
-        ListIterator<Product> iteratorProduct = (ListIterator<Product>) products.iterator();
-        iteratorProduct.add(titleProduct);
-        quantityProduct++;
+        products.add(titleProduct);
         System.out.println("Продукт в корзину добавлен");
     }
 
@@ -29,15 +25,15 @@ public class ProductBasket {
 
     public void printContentBasket() {
         int counterIsSpecial = 0;
-        if (quantityProduct == 0) {
+        if (products.isEmpty()) {
             System.out.println("В корзине пусто");
         } else {
             System.out.printf("\n%20s%23s%10s%28s", "Продукт", "Цена", "Скидка", "Итоговая цена\n");
-            for (int i = 0; i < quantityProduct; i++) {
-                if (products.get(i).isSpecial()) {
+            for (Product variable : products) {
+                if (variable.isSpecial()) {
                     counterIsSpecial++;
                 }
-                System.out.println(products.get(i));
+                System.out.println(variable);
             }
             System.out.printf("%20s%20d%5s", "Итого:", calculateCostBasket(), " руб");
             System.out.printf("\n%20s%10d%5s", "Специальных товаров:", counterIsSpecial, " наименования(е)");
@@ -46,16 +42,13 @@ public class ProductBasket {
 
     public List<Product> deleteProduct(String line) {
         List<Product> delete = new ArrayList<>();
-        ListIterator<Product> iteratorDelete = (ListIterator<Product>) products.iterator();
-        if (quantityProduct == 0) {
+        if (products.isEmpty()) {
             System.out.println("В корзине нет продуктов");
         } else {
-            while (iteratorDelete.hasNext()) {
-                Product c = iteratorDelete.next();
-                if (c.getNameProduct().toLowerCase().contains(line.toLowerCase().trim())) {
-                    delete.add(c);
-                    iteratorDelete.remove();
-                    quantityProduct--;
+            for (Product variable : products) {
+                if (variable.getNameProduct().toLowerCase().contains(line.toLowerCase().trim())) {
+                    delete.add(variable);
+                    products.remove();
                 }
             }
         }
@@ -67,12 +60,12 @@ public class ProductBasket {
             String error = "ОШИБКА не введено название продукта для добавления в корзину ";
             throw new IllegalArgumentException(error);
         }
-        if (quantityProduct == 0) {
+        if (products.isEmpty()) {
             System.out.println("Корзина пуста");
             return false;
         }
-        for (int i = 0; i < quantityProduct; i++) {
-            if (product.trim().equalsIgnoreCase(products.get(i).getNameProduct().trim())) {
+        for (Product variable : products) {
+            if (product.trim().equalsIgnoreCase(variable.getNameProduct().trim())) {
                 return true;
             }
         }
@@ -80,9 +73,7 @@ public class ProductBasket {
     }
 
     public void clearingBasket() {
-        quantityProduct = 0;
         products.clear();
-        //  Arrays.fill(products, null);
         System.out.println("Корзина очищена");
     }
 }
