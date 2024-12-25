@@ -55,7 +55,7 @@ public class ProductBasket {
         return delete;
     }
 
-    public boolean checkProductAvailability(String product) {
+    public boolean checkProductAvailability( String product) {
         if (product == null || product.isBlank()) {
             String error = "ОШИБКА не введено название продукта для добавления в корзину ";
             throw new IllegalArgumentException(error);
