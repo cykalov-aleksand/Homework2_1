@@ -3,28 +3,21 @@ package org.skypro.skyshop.product.searchengine;
 import org.skypro.skyshop.exceptions.BestResultNotFound;
 import org.skypro.skyshop.product.Searchable;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class SearchEngine {
-    private Searchable[] searchable;
+    private ArrayList<Searchable> searchable = new ArrayList<>();
 
-    public SearchEngine(int size) {
-        this.searchable = new Searchable[size];
-    }
-
-    public Searchable[] getSearchable() {
+    public ArrayList<Searchable> getSearchable() {
         return searchable;
     }
 
-    public Searchable[] search(String searchBar) {
-        Searchable[] searchArray = new Searchable[5];
-        int number = 0;
+    public ArrayList<Searchable> search(String searchBar) {
+        ArrayList<Searchable> searchArray = new ArrayList<>();
         for (Searchable element : searchable) {
             if ((element.getSearchTemp().toLowerCase().trim().contains(searchBar.toLowerCase().trim()))) {
-                if (number < 5) {
-                    searchArray[number] = element;
-                    number++;
-                } else {
-                    break;
-                }
+                searchArray.add(element);
             }
         }
         return searchArray;
@@ -59,16 +52,9 @@ public class SearchEngine {
     }
 
     public void add(Searchable[] newObject) {
-        int numberEmptyCell = 0;
-        for (int i = 0; i < searchable.length; i++) {
-            if (searchable[i] == null) {
-                numberEmptyCell = i;
-                break;
-            }
-        }
-        for (Searchable variable : newObject) {
-            searchable[numberEmptyCell] = variable;
-            numberEmptyCell++;
-        }
+        Collections.addAll(searchable, newObject);
+    }
+    public void clearSearchEngine(){
+        searchable.clear();
     }
 }
