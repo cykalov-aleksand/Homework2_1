@@ -208,7 +208,7 @@ public class App {
             System.out.println("Продемонстрируем работу метода search");
             String searchOption1 = "хлеб";
             String searchOption2 = "майонез";
-            String searchOption3 = "а";
+            String searchOption3 ="а";
             printTitle("2.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 + " ");
             demonstrateTheMethod(searchEngeni, searchOption1);
             printTitle("2.2 Продемонстрировали функциональность поиска при вводе строки - " + searchOption2 + " ");
