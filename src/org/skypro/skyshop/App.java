@@ -207,7 +207,7 @@ public class App {
             printTitle("2. Модификация возвращаемого значения в методе поиска");
             System.out.println("Продемонстрируем работу метода search");
             String searchOption1 = "хлеб";
-            String searchOption2 = "майонез";
+            String searchOption2 ="майонез";
             String searchOption3 ="а";
             printTitle("2.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 + " ");
             demonstrateTheMethod(searchEngeni, searchOption1);
