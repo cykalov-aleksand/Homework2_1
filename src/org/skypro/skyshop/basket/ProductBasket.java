@@ -7,6 +7,19 @@ import java.util.*;
 public class ProductBasket {
     private Map<String, ArrayList<Product>> products = new HashMap<>();
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        ProductBasket that = (ProductBasket) object;
+        return Objects.equals(products, that.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(products);
+    }
+
     public void addProduct(Product titleProduct) {
         if (!products.containsKey(titleProduct.getNameProduct())) {
             products.put(titleProduct.getNameProduct(), new ArrayList<>());
