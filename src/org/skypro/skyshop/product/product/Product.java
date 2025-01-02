@@ -3,7 +3,7 @@ package org.skypro.skyshop.product.product;
 import org.skypro.skyshop.product.Searchable;
 
 public abstract class Product implements Searchable {
-    private String nameProduct;
+    private final String nameProduct;
 
     public Product(String nameProduct) throws IllegalArgumentException {
         if ((nameProduct == null) || (nameProduct.isBlank())) {

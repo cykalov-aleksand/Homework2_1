@@ -5,19 +5,25 @@ import org.skypro.skyshop.product.product.Product;
 import java.util.*;
 
 public class ProductBasket {
-    LinkedList<Product> products = new LinkedList<>();
+    private Map<String, ArrayList<Product>> products = new HashMap<>();
+
     public void addProduct(Product titleProduct) {
-        products.add(titleProduct);
-        System.out.println("Продукт в корзину добавлен");
+        if (!products.containsKey(titleProduct.getNameProduct())) {
+            products.put(titleProduct.getNameProduct(), new ArrayList<>());
+        }
+        products.get(titleProduct.getNameProduct()).add(titleProduct);
     }
 
     public int calculateCostBasket() {
         int summa = 0;
-        for (Product product : products) {
-            if (product != null) {
-                summa += product.getPrice();
-            } else {
-                return summa;
+        if (products.isEmpty()) {
+            System.out.println("Корзина пуста!!!");
+            return 0;
+        } else {
+            for (ArrayList<Product> contact : products.values()) {
+                for (Product variable : contact) {
+                    summa += variable.getPrice();
+                }
             }
         }
         return summa;
@@ -26,17 +32,18 @@ public class ProductBasket {
     public void printContentBasket() {
         int counterIsSpecial = 0;
         if (products.isEmpty()) {
-            System.out.println("В корзине пусто");
+            System.out.println("Корзина пуста!!!");
         } else {
             System.out.printf("\n%20s%23s%10s%28s", "Продукт", "Цена", "Скидка", "Итоговая цена\n");
-            for (Product variable : products) {
-                if (variable.isSpecial()) {
-                    counterIsSpecial++;
+            for (ArrayList<Product> contact : products.values()) {
+                for (Product variable : contact) {
+                    if (variable.isSpecial()) {
+                        counterIsSpecial++;
+                    }
+                    System.out.println(variable);
                 }
-                System.out.println(variable);
             }
-            System.out.printf("%20s%20d%5s", "Итого:", calculateCostBasket(), " руб");
-            System.out.printf("\n%20s%10d%5s", "Специальных товаров:", counterIsSpecial, " наименования(е)");
+            System.out.printf("%20s%20d%5s\n%20s%5d%15s", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ", counterIsSpecial, "  наименования(е)");
         }
     }
 
@@ -45,28 +52,28 @@ public class ProductBasket {
         if (products.isEmpty()) {
             System.out.println("В корзине нет продуктов");
         } else {
-            for (Product variable : products) {
-                if (variable.getNameProduct().toLowerCase().contains(line.toLowerCase().trim())) {
-                    delete.add(variable);
-                    products.remove();
+            for (String content : products.keySet()) {
+                if (content.toLowerCase().contains(line.toLowerCase().trim())) {
+                    delete.add(products.get(content).get(0));
+                    products.get(content).remove(0);
                 }
             }
         }
         return delete;
     }
 
-    public boolean checkProductAvailability( String product) {
+    public boolean checkProductAvailability(String product) {
         if (product == null || product.isBlank()) {
-            String error = "ОШИБКА не введено название продукта для добавления в корзину ";
-            throw new IllegalArgumentException(error);
-        }
-        if (products.isEmpty()) {
-            System.out.println("Корзина пуста");
+            System.out.println("Не введено название поиска товара в корзине");
             return false;
         }
-        for (Product variable : products) {
-            if (product.trim().equalsIgnoreCase(variable.getNameProduct().trim())) {
-                return true;
+        if (products.isEmpty()) {
+            System.out.println("Корзина пуста!!!");
+        } else {
+            for (String content : products.keySet()) {
+                if ((content.trim().equalsIgnoreCase(product.trim()))) {
+                    return true;
+                }
             }
         }
         return false;
@@ -74,6 +81,6 @@ public class ProductBasket {
 
     public void clearingBasket() {
         products.clear();
-        System.out.println("Корзина очищена");
+        System.out.println("Корзина очищена!!!");
     }
 }

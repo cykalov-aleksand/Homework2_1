@@ -5,19 +5,21 @@ import org.skypro.skyshop.product.Searchable;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.TreeMap;
 
 public class SearchEngine {
-    private ArrayList<Searchable> searchable = new ArrayList<>();
+    private List<Searchable> searchable = new ArrayList<>();
 
-    public ArrayList<Searchable> getSearchable() {
+    public List<Searchable> getSearchable() {
         return searchable;
     }
 
-    public ArrayList<Searchable> search(String searchBar) {
-        ArrayList<Searchable> searchArray = new ArrayList<>();
-        for (Searchable element : searchable) {
-            if ((element.getSearchTemp().toLowerCase().trim().contains(searchBar.toLowerCase().trim()))) {
-                searchArray.add(element);
+    public TreeMap<String, Searchable> search(String searchBar) {
+        TreeMap<String, Searchable> searchArray = new TreeMap<>();
+        for (Searchable variable : searchable) {
+            if (variable.getSearchTemp().toLowerCase().contains(searchBar.trim().toLowerCase())) {
+                searchArray.put(variable.getSearchTemp(), variable);
             }
         }
         return searchArray;
@@ -54,7 +56,8 @@ public class SearchEngine {
     public void add(Searchable[] newObject) {
         Collections.addAll(searchable, newObject);
     }
-    public void clearSearchEngine(){
+
+    public void clearSearchEngine() {
         searchable.clear();
     }
 }

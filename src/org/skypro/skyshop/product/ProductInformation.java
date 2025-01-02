@@ -27,7 +27,7 @@ public class ProductInformation {
             new DiscountedProduct("Пена для бритья", 455, 15),
             new FixPriceProduct("Хлеб ржаной"),
             new FixPriceProduct("Хлеб Бородинский"),
-            new FixPriceProduct("хлеб нарезной"),
+            new FixPriceProduct("Хлеб нарезной"),
             new FixPriceProduct("Туалетная бумага")
     };
     public Article[] articles = {
@@ -59,31 +59,27 @@ public class ProductInformation {
     }
 
     public void searchProductAddBasket(String product) {
-        if (product == null || product.isBlank()) {
-            String error = "ОШИБКА не введено название продукта для добавления в корзину ";
-            throw new IllegalArgumentException(error);
-        }
         boolean availabilityProduct = false;
-        for (int i = 0; i < products.length; i++) {
-            if (product.trim().equalsIgnoreCase(products[i].getNameProduct().trim())) {
-                availabilityProduct = true;
-                basket.addProduct(products[i]);
+        if ((product!=null)|| (!product.isBlank())) {
+            for (Product value : products) {
+                if (product.trim().equalsIgnoreCase(value.getNameProduct().trim())) {
+                    availabilityProduct = true;
+                    basket.addProduct(value);
+                }
             }
-        }
         if (!availabilityProduct) {
             System.out.println("В магазине такого товара нет");
         }
-    }
+        }else {
+            System.out.println("Hе введено название продукта для добавления в корзину ");
+        }
+        }
 
     public void searchProductBasket(String product) {
-        if (product == null || product.isBlank()) {
-            String error = "ОШИБКА не введено название продукта для добавления в корзину ";
-            throw new IllegalArgumentException(error);
-        }
-        if (basket.checkProductAvailability(product)) {
-            System.out.println("Товар есть в корзине");
-        } else {
-            System.out.println("Товара нет в корзине");
-        }
-    }
+            if (basket.checkProductAvailability(product)) {
+                System.out.println("Товар есть в корзине");
+            } else {
+                System.out.println("Товара нет в корзине");
+            }
+           }
 }

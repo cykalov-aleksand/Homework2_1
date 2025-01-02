@@ -1,9 +1,9 @@
 package org.skypro.skyshop.product.product;
 
 public class SimpleProduct extends Product {
-    private int price;
+    private final int price;
 
-    public SimpleProduct(String nameProduct, int price)throws IllegalArgumentException {
+    public SimpleProduct(String nameProduct, int price) throws IllegalArgumentException {
         super(nameProduct);
         if (price <= 0) {
             throw new IllegalArgumentException("ОШИБКА В ЦЕНЕ ТОВАРА  " + super.getNameProduct());

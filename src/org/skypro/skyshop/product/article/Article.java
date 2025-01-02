@@ -14,13 +14,13 @@ public class Article implements Searchable {
 
     @Override
     public String toString() {
-        return (String.format("%20s", titleAtribute) + "\n" + String.format("%27s", textAtribute));
+        return (String.format("%22s%32s\n%22s%32s", "название статьи", titleAtribute, "текст статьи", textAtribute));
     }
 
 
     @Override
     public String getSearchTemp() {
-        return toString();
+        return String.format("%27s\n%27s", textAtribute, textAtribute);
     }
 
     @Override
