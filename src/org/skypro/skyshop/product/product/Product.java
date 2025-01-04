@@ -2,8 +2,10 @@ package org.skypro.skyshop.product.product;
 
 import org.skypro.skyshop.product.Searchable;
 
+import java.util.Objects;
+
 public abstract class Product implements Searchable {
-    private  String nameProduct;
+    private String nameProduct;
 
     public Product(String nameProduct) throws IllegalArgumentException {
         if ((nameProduct == null) || (nameProduct.isBlank())) {
@@ -30,4 +32,21 @@ public abstract class Product implements Searchable {
         return "PRODUCT";
     }
 
+    @Override
+    public String requestForSingleField() {
+        return nameProduct;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Product product = (Product) object;
+        return Objects.equals(nameProduct, product.nameProduct);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nameProduct);
+    }
 }

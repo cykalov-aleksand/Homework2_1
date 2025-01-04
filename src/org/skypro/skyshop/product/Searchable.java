@@ -5,7 +5,9 @@ public interface Searchable {
 
     String getContentType();
 
+    String requestForSingleField();
+
     default String getStringRepresentation() {
-        return String.format("%5s%22s%10s%20s", "Имя ", getSearchTemp(), " — тип - ", getContentType());
+        return String.format("%5s%42s%10s%20s", "Имя ", getSearchTemp(), " — тип - ", getContentType());
     }
 }
