@@ -11,7 +11,7 @@ public class newComporator implements Comparator<Searchable> {
         if (Integer.compare(o2.requestForSingleField().length(), o1.requestForSingleField().length()) != 0) {
             return Integer.compare(o2.requestForSingleField().length(), o1.requestForSingleField().length());
         } else {
-            return o1.getSearchTemp().compareTo(o2.getSearchTemp());
+            return o1.getSearchTemp().compareToIgnoreCase(o2.getSearchTemp());
         }
     }
 }

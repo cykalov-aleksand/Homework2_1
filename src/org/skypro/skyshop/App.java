@@ -249,17 +249,17 @@ public class App {
             System.out.println("Количество элементов в объекте класса SearchEngine равно: " + numberGetSearhable);
             System.out.println("Итого в массивах article и product " + (numberArrays - numberGetSearhable) + " одинаковых строк не вошедших в объект класса SearchEngine.");
             printTitle("Проверим работу КОМПОРАТОРА");
-            System.out.println("Для чего занесем в корзину продукты с одинаковым количеством строк но разного содержания и выведем на консоль содержание продуктов ");
-            printTitle("4.1 Распечатаем содержимое корзины ");
-            productInformation.basket.printContentBasket();
-            String searchOption1 = "а";
-            String searchOption2 = "батон";
-            System.out.println("\n4.2 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
+            String searchOption1 = "майонез";
+            String searchOption2 = "а";
+            String searchOption3 = "Конфеты";
+            System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
                     ", на предмет сортировки выводимой информации по ключу Set поиска \n");
             demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
             System.out.println("Убедились что фильтрация производится от большего количества строк к меньшему и строки с одинаковым количеством элементов сортируются в натуральном порядке");
-            System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption2);
+            System.out.println("\n4.2 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption2);
             demonstrateTheMethod(productInformation.searchEngeni, searchOption2);
+            System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption3);
+            demonstrateTheMethod(productInformation.searchEngeni, searchOption3);
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage() + "  проведите корректировку вводимых данных");
         } catch (NullPointerException e) {

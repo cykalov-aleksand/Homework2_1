@@ -23,7 +23,7 @@ public class Article implements Searchable {
     @Override
     public String getSearchTemp() {
 
-        return String.format("%27s\n%47s",titleAtribute, textAtribute);
+        return String.format("%27s\n%47s", titleAtribute, textAtribute);
     }
 
     @Override

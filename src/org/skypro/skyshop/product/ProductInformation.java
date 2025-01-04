@@ -28,23 +28,20 @@ public class ProductInformation {
             new DiscountedProduct("Пена для бритья", 455, 15),
             new FixPriceProduct("Хлеб ржаной"),
             new FixPriceProduct("Хлеб Бородинский"),
-            new FixPriceProduct("Хлеб нарезной"),
             new FixPriceProduct("Туалетная бумага"),
-            new FixPriceProduct("Батон нарезной 1 кат"),
-            new FixPriceProduct("Батон нарезной 2 кат"),
-            new FixPriceProduct("Батон нарезной 3 кат"),
-            new FixPriceProduct("Батон нарезной 4 кат"),
-            new FixPriceProduct("Батон нарезной 4 кат"),
-            new FixPriceProduct("Батон нарезной 4 кат"),
-            new FixPriceProduct("Батон нарезной 4 кат"),
-            new FixPriceProduct("Батон нарезной 4 кат")
+            new FixPriceProduct("Батон нарезной"),
+            new FixPriceProduct("Батон нарезной"),
+            new FixPriceProduct("Батон нарезной"),
+            new FixPriceProduct("Батон нарезной"),
+            new FixPriceProduct("Батон нарезной")
 
     };
     public Article[] articles = {
+            new Article("Шампунь", "Шампунь Ромашка"),
             new Article("Конфеты", "Конфеты Cладкоежка"),
             new Article("Макароны", "Макароны Макфа"),
             new Article("Пельмени", "Пельмени Рузские"),
-            new Article("Мaсло", "Масло Вологодское"),
+            new Article("Масло", "Масло Вологодское"),
             new Article("Сосиски", "Сосиски Микояновские"),
             new Article("Кетчуп", "Кетчуп острый"),
             new Article("Кетчуп", "Кетчуп острый"),
@@ -58,10 +55,9 @@ public class ProductInformation {
             new Article("Мыло", "Мыло Palmolive"),
             new Article("Хлеб ржаной", "Хлебобулочное изделие"),
             new Article("Хлеб Бородинский", "Хлебобулочное изделие"),
-            new Article("Батон нарезной 1 кат", "Батон нарезной 1 кат"),
-            new Article("Батон нарезной 2 кат", "Батон нарезной 2 кат"),
-            new Article("Батон нарезной 3 кат", "Батон нарезной 3 кат"),
-            new Article("Батон нарезной 4 кат", "Батон нарезной 4 кат"),
+            new Article("Батон нарезной", "Батон нарезной 1 кат"),
+            new Article("Батон нарезной", "Батон нарезной 4 кат"),
+            new Article("Батон нарезной 4 кат ", "Батон нарезной 4 кат"),
             new Article("Стиральный порошок", "Стиральный порошок Tide"),
             new Article("Пена для бритья", "Пена для бритья Tide")
     };
