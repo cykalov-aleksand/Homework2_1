@@ -11,7 +11,7 @@ import org.skypro.skyshop.product.searchengine.SearchEngine;
 public class ProductInformation {
 
     public Product[] products = {
-            new SimpleProduct("Конфеты ", 800),
+            new SimpleProduct("Конфеты", 800),
             new SimpleProduct("Макароны", 80),
             new SimpleProduct("Пельмени", 350),
             new SimpleProduct("Масло", 120),
@@ -30,10 +30,7 @@ public class ProductInformation {
             new FixPriceProduct("Хлеб Бородинский"),
             new FixPriceProduct("Туалетная бумага"),
             new FixPriceProduct("Батон нарезной"),
-            new FixPriceProduct("Батон нарезной"),
-            new FixPriceProduct("Батон нарезной"),
-            new FixPriceProduct("Батон нарезной"),
-            new FixPriceProduct("Батон нарезной")
+
 
     };
     public Article[] articles = {
@@ -55,9 +52,8 @@ public class ProductInformation {
             new Article("Мыло", "Мыло Palmolive"),
             new Article("Хлеб ржаной", "Хлебобулочное изделие"),
             new Article("Хлеб Бородинский", "Хлебобулочное изделие"),
-            new Article("Батон нарезной", "Батон нарезной 1 кат"),
-            new Article("Батон нарезной", "Батон нарезной 4 кат"),
-            new Article("Батон нарезной 4 кат ", "Батон нарезной 4 кат"),
+            new Article("Батон нарезной 4 кат", "Батон нарезной 4 кат"),
+            new Article("Батон нарезной 4 кат", "Батон нарезной 4 кат"),
             new Article("Стиральный порошок", "Стиральный порошок Tide"),
             new Article("Пена для бритья", "Пена для бритья Tide")
     };

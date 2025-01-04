@@ -250,8 +250,8 @@ public class App {
             System.out.println("Итого в массивах article и product " + (numberArrays - numberGetSearhable) + " одинаковых строк не вошедших в объект класса SearchEngine.");
             printTitle("Проверим работу КОМПОРАТОРА");
             String searchOption1 = "майонез";
-            String searchOption2 = "а";
-            String searchOption3 = "Конфеты";
+            String searchOption2 = "хлеб";
+            String searchOption3 = "е";
             System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
                     ", на предмет сортировки выводимой информации по ключу Set поиска \n");
             demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
