@@ -2,8 +2,6 @@ package org.skypro.skyshop.product.article;
 
 import org.skypro.skyshop.product.Searchable;
 
-import java.util.Objects;
-
 public class Article implements Searchable {
     private String titleAtribute;
     private String textAtribute;
@@ -22,31 +20,11 @@ public class Article implements Searchable {
 
     @Override
     public String getSearchTemp() {
-
-        return String.format("%27s\n%47s", titleAtribute, textAtribute);
+        return String.format("%27s\n%27s", textAtribute, textAtribute);
     }
 
     @Override
     public String getContentType() {
         return "ARTICLE";
     }
-
-    @Override
-    public String requestForSingleField() {
-        return titleAtribute;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        Article article = (Article) object;
-        return Objects.equals(titleAtribute, article.titleAtribute);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(titleAtribute);
-    }
 }
-
