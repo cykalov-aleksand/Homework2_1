@@ -56,7 +56,7 @@ public class ProductBasket {
                     System.out.println(variable);
                 }
             }
-            System.out.printf("%20s%20d%5s\n%20s%5d%15s", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ", counterIsSpecial, "  наименования(е)");
+            System.out.printf("%20s%20d%5s\n%20s%5d", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ", counterIsSpecial);
         }
     }
 
