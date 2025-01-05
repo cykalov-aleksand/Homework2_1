@@ -15,7 +15,7 @@ public class SearchEngine {
     public Set<Searchable> search(String searchBar) {
         Set<Searchable> searchArray = new TreeSet<>(new NewComporator());
         for (Searchable variable : searchable) {
-            if (variable.getSearchTemp().toLowerCase().contains(searchBar.trim().toLowerCase())) {
+            if (variable.sortingElement().toLowerCase().contains(searchBar.trim().toLowerCase())) {
                 searchArray.add(variable);
             }
         }
