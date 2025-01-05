@@ -11,7 +11,7 @@ public abstract class Product implements Searchable {
         if ((nameProduct == null) || (nameProduct.isBlank())) {
             throw new IllegalArgumentException("ОШИБКА - НЕ ВВЕДЕНО НАЗВАНИЕ ПРОДУКТА В ПРОДУКТОВОМ МАССИВЕ МАГАЗИНА");
         }
-        this.nameProduct = nameProduct;
+        this.nameProduct = nameProduct.trim();
     }
 
     public String getNameProduct() {
@@ -30,6 +30,10 @@ public abstract class Product implements Searchable {
 
     public String getContentType() {
         return "PRODUCT";
+    }
+
+    public String sortingElement() {
+        return nameProduct;
     }
 
     @Override

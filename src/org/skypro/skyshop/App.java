@@ -165,7 +165,7 @@ public class App {
 
     static void demonstrateTheMethod(SearchEngine object, String line) {
         for (Searchable variant : object.search(line)) {
-            System.out.println(variant.getStringRepresentation());
+            System.out.printf("%5s%30s%10s%30s\n", "Имя ", variant.sortingElement(), " — тип - ", variant.getContentType());
         }
     }
 
@@ -260,6 +260,12 @@ public class App {
             demonstrateTheMethod(productInformation.searchEngeni, searchOption2);
             System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption3);
             demonstrateTheMethod(productInformation.searchEngeni, searchOption3);
+            System.out.println();
+            System.out.println("В результате демонстрации метода фильтрации по букве \"а\" наблюдаем, что фильтрация производится согласно условия задачи." +
+                    " Элементы Article выводятся в тех случаях, когда слово встречается в тексте статьи, а не названия, данное условие присутствовало " +
+                    "в предыдущих заданиях,если нас это не устраивает, свободно можем произвести замену в методе search(), метод сравнения элементов поиска " +
+                    "getSearchTemp() на метод sortingElement(). И в этом случае, сортировка по тексту статей производиться не будет, но в таком случае у нас " +
+                    "отпадает необходимость дополнительной сортировки в классе NewComporator.");
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage() + "  проведите корректировку вводимых данных");
         } catch (NullPointerException e) {

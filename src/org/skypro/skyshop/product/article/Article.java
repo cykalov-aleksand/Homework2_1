@@ -9,19 +9,23 @@ public class Article implements Searchable {
     private String textAtribute;
 
     public Article(String titleAtribute, String textAtribute) {
-        this.titleAtribute = titleAtribute;
+        this.titleAtribute = titleAtribute.trim();
         this.textAtribute = textAtribute;
+    }
+
+    public String sortingElement() {
+        return titleAtribute;
     }
 
     @Override
     public String toString() {
-        return (String.format("%27s\n%35s",titleAtribute,  textAtribute));
+        return (String.format("%27s\n%35s", titleAtribute, textAtribute));
     }
 
 
     @Override
     public String getSearchTemp() {
-        return toString();
+        return (String.format("%27s\n%35s", titleAtribute, textAtribute));
     }
 
     @Override
