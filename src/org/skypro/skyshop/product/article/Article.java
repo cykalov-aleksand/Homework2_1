@@ -12,20 +12,16 @@ public class Article implements Searchable {
         this.titleAtribute = titleAtribute;
         this.textAtribute = textAtribute;
     }
-    @Override
-    public String requestForSingleField(){
-        return textAtribute;
-    }
 
     @Override
     public String toString() {
-        return (String.format("%10s%50s\n%10s%50s", "название статьи", titleAtribute, "текст статьи", textAtribute));
+        return (String.format("%27s\n%35s",titleAtribute,  textAtribute));
     }
 
 
     @Override
     public String getSearchTemp() {
-        return String.format("%20s", textAtribute);
+        return toString();
     }
 
     @Override

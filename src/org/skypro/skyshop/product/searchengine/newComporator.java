@@ -8,9 +8,9 @@ public class newComporator implements Comparator<Searchable> {
 
     @Override
     public int compare(Searchable o1, Searchable o2) {
-        if (Integer.compare(o2.requestForSingleField().length(), o1.requestForSingleField().length()) != 0) {
-            return Integer.compare(o2.requestForSingleField().length(), o1.requestForSingleField().length());
-        } else {
+        if (Integer.compare(o2.getSearchTemp().length(), o1.getSearchTemp().length()) != 0)
+            return Integer.compare(o2.getSearchTemp().length(), o1.getSearchTemp().length());
+        else {
             return o1.getSearchTemp().compareToIgnoreCase(o2.getSearchTemp());
         }
     }

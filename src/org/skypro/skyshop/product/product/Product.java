@@ -33,11 +33,6 @@ public abstract class Product implements Searchable {
     }
 
     @Override
-    public String requestForSingleField() {
-        return nameProduct;
-    }
-
-    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;

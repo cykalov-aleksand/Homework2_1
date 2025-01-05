@@ -251,7 +251,7 @@ public class App {
             printTitle("Проверим работу КОМПОРАТОРА");
             String searchOption1 = "майонез";
             String searchOption2 = "хлеб";
-            String searchOption3 = "е";
+            String searchOption3 = "а";
             System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
                     ", на предмет сортировки выводимой информации по ключу Set поиска \n");
             demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
