@@ -264,7 +264,7 @@ public class App {
             System.out.println("В результате демонстрации метода фильтрации по букве \"а\" наблюдаем, что фильтрация производится согласно условия задачи." +
                     " Элементы Article выводятся в тех случаях, когда слово встречается в названии текста статьи, а не названия продукта.");
         } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage() + "  проведите корректировку вводимых данных");
+            System.err.println(e.getMessage() + "  проведите корректировку вводимых данных.");
         } catch (NullPointerException e) {
             System.err.println(e.getMessage());
         }
