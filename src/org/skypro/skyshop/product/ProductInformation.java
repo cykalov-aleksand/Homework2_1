@@ -72,7 +72,7 @@ public class ProductInformation {
 
     public void searchProductAddBasket(String product) {
         boolean availabilityProduct = false;
-        if ((product != null) && (!product.isBlank())) {
+        if (!product.isBlank()) {
             for (Product value : products) {
                 if (product.trim().equalsIgnoreCase(value.getNameProduct().trim())) {
                     availabilityProduct = true;

@@ -76,7 +76,7 @@ public class ProductBasket {
     }
 
     public boolean checkProductAvailability(String product) {
-        if (product == null || product.isBlank()) {
+        if (product.isBlank()) {
             System.out.println("Не введено название поиска товара в корзине");
             return false;
         }

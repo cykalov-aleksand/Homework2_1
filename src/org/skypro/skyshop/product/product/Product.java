@@ -8,8 +8,8 @@ public abstract class Product implements Searchable {
     private String nameProduct;
 
     public Product(String nameProduct) throws IllegalArgumentException {
-        if ((nameProduct == null) || (nameProduct.isBlank())) {
-            throw new IllegalArgumentException("ОШИБКА - НЕ ВВЕДЕНО НАЗВАНИЕ ПРОДУКТА В ПРОДУКТОВОМ МАССИВЕ МАГАЗИНА");
+        if (nameProduct.isBlank()) {
+            throw new IllegalArgumentException("Ошибка - не введено название продукта в продуктовом массиве магазина");
         }
         this.nameProduct = nameProduct.trim();
     }
