@@ -125,8 +125,6 @@ public class App {
         searchEngeni.clearSearchEngine();
         completeTask2(productInformation, searchEngeni);
         System.out.println("\nУбедились что программа отрабатывает согласно условия задания.");
-
-
     }
 
     static void completeTask5(ProductInformation productInformation, SearchEngine searchEngeni) {
@@ -161,6 +159,43 @@ public class App {
         System.out.println("2.3 Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 +
                 ", на предмет сортировки выводимой информации по ключу Set поиска \n");
         demonstrateTheMethod(searchEngeni, searchOption3);
+    }
+
+    static void completeTask6(ProductInformation productInformation, SearchEngine searchEngeni) {
+        printTitle("Java Collections Framework: Set");
+        printTitle("1.Произвели замену List на Set в классе SearchEnable.");
+        printTitle("2. Реализовали equals и hashCode в классах Product  и Article");
+        System.out.println("3. Для демонстрации того, что продуктов и статей с одинаковым именем не существует в объекте класса SearchEngine, ");
+        System.out.println("добавим в массивы данных одинаковые строки \"кетчуп\" в Article и \" и батон нарезной 4 кат.\" в массиве product" + "\n" +
+                "и пройдем по объекту в поиске указанных строк и при наличии выведем в консоль");
+        String controlLine1 = "кетчуп";
+        printTitle(" 3.1 первая проверка по строке " + controlLine1);
+        checkingStringSearhEngine(productInformation.searchEngeni, controlLine1);
+        String controlLine2 = "батон нарезной 4 кат";
+        printTitle(" 3.2 вторая проверка по строке " + controlLine2);
+        checkingStringSearhEngine(productInformation.searchEngeni, controlLine2);
+        System.out.println("Убедились что в консоль выводится информация по одному продукту ");
+        System.out.println("3.3 сравним сумму элементов массивов article и product с количеством элементов в объекте класса SearchEngine");
+        int numberArrays = productInformation.articles.length + productInformation.products.length;
+        System.out.println("Сумма элементов массива article и product равна: " + numberArrays);
+        int numberGetSearhable = productInformation.searchEngeni.getSearchable().size();
+        System.out.println("Количество элементов в объекте класса SearchEngine равно: " + numberGetSearhable);
+        System.out.println("Итого в массивах article и product " + (numberArrays - numberGetSearhable) + " одинаковых строк не вошедших в объект класса SearchEngine.");
+        printTitle("Проверим работу КОМПОРАТОРА");
+        String searchOption1 = "майонез";
+        String searchOption2 = "хлеб";
+        String searchOption3 = "а";
+        System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
+                ", на предмет сортировки выводимой информации по ключу Set поиска \n");
+        demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
+        System.out.println("Убедились что фильтрация производится от большего количества строк к меньшему и строки с одинаковым количеством элементов сортируются в натуральном порядке");
+        System.out.println("\n4.2 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption2);
+        demonstrateTheMethod(productInformation.searchEngeni, searchOption2);
+        System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption3);
+        demonstrateTheMethod(productInformation.searchEngeni, searchOption3);
+        System.out.println();
+        System.out.println("В результате демонстрации метода фильтрации по букве \"а\" наблюдаем, что фильтрация производится согласно условия задачи." +
+                " Элементы Article выводятся в тех случаях, когда слово встречается в названии текста статьи, а не названия продукта.");
     }
 
     static void demonstrateTheMethod(SearchEngine object, String line) {
@@ -228,41 +263,8 @@ public class App {
             completeTask3(productInformation, productInformation.searchEngeni);
             completeTask4(productInformation, productInformation.searchEngeni);
             completeTask5(productInformation, productInformation.searchEngeni);
+            completeTask6(productInformation, productInformation.searchEngeni);
 
-            printTitle("Java Collections Framework: Set");
-            printTitle("1.Произвели замену List на Set в классе SearchEnable.");
-            printTitle("2. Реализовали equals и hashCode в классах Product  и Article");
-            System.out.println("3. Для демонстрации того, что продуктов и статей с одинаковым именем не существует в объекте класса SearchEngine, ");
-            System.out.println("добавим в массивы данных одинаковые строки \"кетчуп\" в Article и \" и батон нарезной 4 кат.\" в массиве product" + "\n" +
-                    "и пройдем по объекту в поиске указанных строк и при наличии выведем в консоль");
-            String controlLine1 = "кетчуп";
-            printTitle(" 3.1 первая проверка по строке " + controlLine1);
-            checkingStringSearhEngine(productInformation.searchEngeni, controlLine1);
-            String controlLine2 = "батон нарезной 4 кат";
-            printTitle(" 3.2 вторая проверка по строке " + controlLine2);
-            checkingStringSearhEngine(productInformation.searchEngeni, controlLine2);
-            System.out.println("Убедились что в консоль выводится информация по одному продукту ");
-            System.out.println("3.3 сравним сумму элементов массивов article и product с количеством элементов в объекте класса SearchEngine");
-            int numberArrays = productInformation.articles.length + productInformation.products.length;
-            System.out.println("Сумма элементов массива article и product равна: " + numberArrays);
-            int numberGetSearhable = productInformation.searchEngeni.getSearchable().size();
-            System.out.println("Количество элементов в объекте класса SearchEngine равно: " + numberGetSearhable);
-            System.out.println("Итого в массивах article и product " + (numberArrays - numberGetSearhable) + " одинаковых строк не вошедших в объект класса SearchEngine.");
-            printTitle("Проверим работу КОМПОРАТОРА");
-            String searchOption1 = "майонез";
-            String searchOption2 = "хлеб";
-            String searchOption3 = "а";
-            System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
-                    ", на предмет сортировки выводимой информации по ключу Set поиска \n");
-            demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
-            System.out.println("Убедились что фильтрация производится от большего количества строк к меньшему и строки с одинаковым количеством элементов сортируются в натуральном порядке");
-            System.out.println("\n4.2 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption2);
-            demonstrateTheMethod(productInformation.searchEngeni, searchOption2);
-            System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption3);
-            demonstrateTheMethod(productInformation.searchEngeni, searchOption3);
-            System.out.println();
-            System.out.println("В результате демонстрации метода фильтрации по букве \"а\" наблюдаем, что фильтрация производится согласно условия задачи." +
-                    " Элементы Article выводятся в тех случаях, когда слово встречается в названии текста статьи, а не названия продукта.");
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage() + "  проведите корректировку вводимых данных.");
         } catch (NullPointerException e) {
