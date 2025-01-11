@@ -38,9 +38,10 @@ public class ProductBasket {
             System.out.println("В корзине нет продуктов");
         } else {
             delete = products.values().stream().flatMap(Collection::stream).filter((o) -> o.getNameProduct().toLowerCase()
-                    .contains(line.toLowerCase().trim())).filter(Objects::nonNull).collect(Collectors.toList());
-            products.values().stream().flatMap(Collection::stream).filter((o) -> o.getNameProduct().toLowerCase()
-                    .contains(line.toLowerCase().trim())).forEach(o -> o = null);
+                    .contains(line.toLowerCase().trim())).findFirst().stream().collect(Collectors.toList());
+            if (!delete.isEmpty()) {
+                products.get(delete.get(0).getNameProduct()).remove(0);
+            }
         }
         return delete;
     }

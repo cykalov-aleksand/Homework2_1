@@ -264,6 +264,22 @@ public class App {
             completeTask4(productInformation, productInformation.searchEngeni);
             completeTask5(productInformation, productInformation.searchEngeni);
             completeTask6(productInformation, productInformation.searchEngeni);
+            printTitle("ДОМАШНЕЕ ЗАДАНИЕ Stream API и лямбда-выражения");
+            System.out.println("1. Изменили метод search в поисковом движке, результат его работы наблюдаем в пункте 4.3");
+            System.out.println("2. Произвели изменения методов в классе ProductBasket, для проверки работы этих методов выведем на консоль домашнее задание с добавлением продуктов в корзину ");
+            completeTask1(productInformation);
+
+            System.out.println();
+            System.out.println("2.2 Продемонстрировали работу класса за исключением удаления продукта с корзины. Произведем данную проверку.\n");
+            System.out.println("Для чего, вновь заполним корзину продуктами.\n");
+            initialFillingOfBasket(productInformation);
+            System.out.println("2.3 Выведем на консоль содержимое корзины до удаления товара\n");
+            productInformation.basket.printContentBasket();
+            String productDelete = "конфеты";
+            System.out.println("\n 2.4 Удалим из корзины один продукт \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
+            printDeleteProductBasket(productInformation, productDelete);
+            printTitle("2.5 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
+            productInformation.basket.printContentBasket();
 
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage() + "  проведите корректировку вводимых данных.");
