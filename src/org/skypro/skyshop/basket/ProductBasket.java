@@ -22,13 +22,15 @@ public class ProductBasket {
     }
 
     public void printContentBasket() {
+        int count=0;
         if (calculateCostBasket() != 0) {
             System.out.printf("\n%20s%23s%10s%28s", "Продукт", "Цена", "Скидка", "Итоговая цена\n");
             products.values().stream().flatMap(Collection::stream).forEach(System.out::println);
-            System.out.printf("%20s%20d%5s\n%20s%5d", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ", calculateCostBasket());
-        }
-    }
+             count = (int) products.values().stream().flatMap(Collection::stream).filter(Product::isSpecial).count();
+                  }
+            System.out.printf("%20s%20d%5s\n%20s%5d", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ",count);
 
+    }
     public List<Product> deleteProduct(String query) {
         List<Product> search = new ArrayList<>();
         if (calculateCostBasket() != 0) {
