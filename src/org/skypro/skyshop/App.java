@@ -216,14 +216,13 @@ public class App {
         }
     }
 
-    static void printDeleteProductBasket(ProductInformation object, String line) {
-        int index = 0;
-        for (Product element : object.basket.deleteProduct(line)) {
-            index++;
-            System.out.println(element);
-        }
-        if (index == 0) {
-            System.out.println("Список пуст, проверьте правильность ввода строки удаления");
+    static void printDeleteProductBasket(ProductInformation object, String prduct) {
+           if (object.basket.deleteProduct(prduct).isEmpty()) {
+            System.out.println("Список пуст, проверьте правильность ввода строки удаления продукта.");
+        } else {
+            for (Product element : object.basket.deleteProduct(prduct)) {
+             System.out.println("Продукт: "+element+"\nудален.");
+            }
         }
     }
 

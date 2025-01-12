@@ -13,9 +13,9 @@ public class SearchEngine {
         return searchable;
     }
 
-    public Set<Searchable> search(String searchBar) {
-        return searchable.stream().filter(Objects::nonNull).filter((o1) -> o1.sortingElement().toLowerCase()
-                        .contains(searchBar.trim().toLowerCase()))
+    public Set<Searchable> search(String query) {
+        return searchable.stream().filter(Objects::nonNull).filter((product) -> product.sortingElement().toLowerCase()
+                        .contains(query.trim().toLowerCase()))
                 .collect(Collectors.toCollection(() -> new TreeSet<>(new NewComporator())));
     }
 

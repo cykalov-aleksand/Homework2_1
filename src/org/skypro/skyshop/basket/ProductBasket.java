@@ -22,40 +22,38 @@ public class ProductBasket {
     }
 
     public void printContentBasket() {
-        if (products.isEmpty()) {
-            System.out.println("Корзина пуста!!!");
-        } else {
+        if (calculateCostBasket() != 0) {
             System.out.printf("\n%20s%23s%10s%28s", "Продукт", "Цена", "Скидка", "Итоговая цена\n");
             products.values().stream().flatMap(Collection::stream).forEach(System.out::println);
-            int count = (int) products.values().stream().flatMap(Collection::stream).filter(Product::isSpecial).count();
-            System.out.printf("%20s%20d%5s\n%20s%5d", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ", count);
+            System.out.printf("%20s%20d%5s\n%20s%5d", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ", calculateCostBasket());
         }
     }
 
-    public List<Product> deleteProduct(String line) {
-        List<Product> delete = new ArrayList<>();
-        if (products.isEmpty()) {
-            System.out.println("В корзине нет продуктов");
-        } else {
-            delete = products.values().stream().flatMap(Collection::stream).filter((o) -> o.getNameProduct().toLowerCase()
-                    .contains(line.toLowerCase().trim())).findFirst().stream().collect(Collectors.toList());
-            if (!delete.isEmpty()) {
-                products.get(delete.get(0).getNameProduct()).remove(0);
-            }
+    public List<Product> deleteProduct(String query) {
+        List<Product> search = new ArrayList<>();
+String s;
+        if (calculateCostBasket() != 0) {
+            search = products.values().stream().flatMap(Collection::stream).filter((product) -> product.getNameProduct().toLowerCase()
+                    .contains(query.toLowerCase().trim())).findFirst().stream().collect(Collectors.toList());
+
+           if (!search.isEmpty()) {
+               List<Product> finalSearch = search;
+               Optional.of(search).map(o->products.get(finalSearch.get(0).getNameProduct())
+                       .remove(products.get(finalSearch.get(0).getNameProduct()).size()-1));
+                       }
         }
-        return delete;
+        return search;
     }
 
-    public boolean checkProductAvailability(String product) {
-        if (product.isBlank()) {
+    public boolean checkProductAvailability(String query) {
+        if (query.isBlank()) {
             System.out.println("Не введено название поиска товара в корзине");
             return false;
         }
-        if (products.isEmpty()) {
-            System.out.println("Корзина пуста!!!");
+        if (calculateCostBasket() == 0) {
             return false;
         } else {
-            return products.keySet().stream().anyMatch(o -> o.trim().equalsIgnoreCase(product.trim()));
+            return products.keySet().stream().anyMatch(product -> product.trim().equalsIgnoreCase(query.trim()));
         }
     }
 
