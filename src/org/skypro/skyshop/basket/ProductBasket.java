@@ -31,16 +31,27 @@ public class ProductBasket {
 
     public List<Product> deleteProduct(String query) {
         List<Product> search = new ArrayList<>();
-String s;
         if (calculateCostBasket() != 0) {
             search = products.values().stream().flatMap(Collection::stream).filter((product) -> product.getNameProduct().toLowerCase()
                     .contains(query.toLowerCase().trim())).findFirst().stream().collect(Collectors.toList());
+            if (!search.isEmpty()) {
+                List<Product> finalSearch = search;
+                Optional.of(search).map(o -> products.get(finalSearch.get(0).getNameProduct())
+                        .remove(products.get(finalSearch.get(0).getNameProduct()).size() - 1));
+            }
+        }
+        return search;
+    }
 
-           if (!search.isEmpty()) {
-               List<Product> finalSearch = search;
-               Optional.of(search).map(o->products.get(finalSearch.get(0).getNameProduct())
-                       .remove(products.get(finalSearch.get(0).getNameProduct()).size()-1));
-                       }
+    public List<Product> deleteProductAll(String query) {
+        List<Product> search = new ArrayList<>();
+        if (calculateCostBasket() != 0) {
+            search = products.values().stream().flatMap(Collection::stream).filter((product) -> product.getNameProduct().toLowerCase()
+                    .contains(query.toLowerCase().trim())).filter(Objects::nonNull).collect(Collectors.toList());
+            if (!search.isEmpty()) {
+                List<Product> finalSearch = search;
+                Optional.of(search).map(o -> products.get(finalSearch.get(finalSearch.size() - 1).getNameProduct()).removeAll(finalSearch));
+            }
         }
         return search;
     }
