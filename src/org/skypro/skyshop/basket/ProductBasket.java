@@ -80,7 +80,7 @@ public class ProductBasket {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         ProductBasket that = (ProductBasket) object;
-        return Objects.equals(products, that.products);
+         return Objects.equals(products, that.products);
     }
 
     @Override
