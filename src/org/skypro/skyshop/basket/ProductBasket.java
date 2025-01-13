@@ -36,7 +36,7 @@ public class ProductBasket {
         List<Product> search = new ArrayList<>();
         if (calculateCostBasket() != 0) {
             search = products.values().stream().flatMap(Collection::stream).filter((product) -> product.getNameProduct().toLowerCase()
-                    .contains(query.toLowerCase().trim())).filter(Objects::nonNull).collect(Collectors.toList());
+                    .equals(query.toLowerCase().trim())).filter(Objects::nonNull).collect(Collectors.toList());
             if (!search.isEmpty()) {
                 List<Product> finalSearch = search;
                 Optional.of(search).map(product -> products.get(finalSearch.get(finalSearch.size() - 1).getNameProduct()).removeAll(finalSearch));

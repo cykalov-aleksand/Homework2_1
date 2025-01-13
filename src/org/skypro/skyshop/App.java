@@ -283,7 +283,7 @@ public class App {
             printDeleteProductBasket(productInformation, productDelete);
             printTitle("2.5 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
             productInformation.basket.printContentBasket();
-            productDelete = "apple";
+            productDelete = "Пapple";
             System.out.println(" \n2.6 Удалим из корзины продукт которого нет в корзине \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
             printDeleteProductBasket(productInformation, productDelete);
             printTitle("2.7 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
