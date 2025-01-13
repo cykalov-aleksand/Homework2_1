@@ -38,7 +38,7 @@ public class ProductBasket {
                     .contains(query.toLowerCase().trim())).findFirst().stream().collect(Collectors.toList());
             if (!search.isEmpty()) {
                 List<Product> finalSearch = search;
-                Optional.of(search).map(o -> products.get(finalSearch.get(0).getNameProduct())
+                Optional.of(search).map(product -> products.get(finalSearch.get(0).getNameProduct())
                         .remove(products.get(finalSearch.get(0).getNameProduct()).size() - 1));
             }
         }
@@ -52,7 +52,7 @@ public class ProductBasket {
                     .contains(query.toLowerCase().trim())).filter(Objects::nonNull).collect(Collectors.toList());
             if (!search.isEmpty()) {
                 List<Product> finalSearch = search;
-                Optional.of(search).map(o -> products.get(finalSearch.get(finalSearch.size() - 1).getNameProduct()).removeAll(finalSearch));
+                Optional.of(search).map(product -> products.get(finalSearch.get(finalSearch.size() - 1).getNameProduct()).removeAll(finalSearch));
             }
         }
         return search;
