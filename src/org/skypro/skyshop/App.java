@@ -216,22 +216,12 @@ public class App {
         }
     }
 
-    static void printDeleteProductBasketAll(ProductInformation object, String prduct) {
-        List<Product> arrayDeleteProduct = object.basket.deleteProductAll(prduct);
-        if (arrayDeleteProduct.isEmpty()) {
-            System.out.println("Список пуст, проверьте правильность ввода строки удаления продукта.");
-        } else {
-            for (Product element : arrayDeleteProduct) {
-                System.out.println("Продукт: " + element + "\nудален.");
-            }
-        }
-    }
 
     static void printDeleteProductBasket(ProductInformation object, String prduct) {
         List<Product> arrayDeleteProduct = object.basket.deleteProduct(prduct);
-        if (arrayDeleteProduct == null) {
+        if (arrayDeleteProduct.isEmpty())
             System.out.println("Список пуст, проверьте правильность ввода строки удаления продукта.");
-        } else {
+        else {
             for (Product element : arrayDeleteProduct) {
                 System.out.println("Продукт: " + element + "\nудален.");
             }
@@ -293,9 +283,9 @@ public class App {
             printDeleteProductBasket(productInformation, productDelete);
             printTitle("2.5 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
             productInformation.basket.printContentBasket();
-            productDelete = "пена для бритья";
-            System.out.println(" \n2.6 Удалим из корзины весь комплект продуктов \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
-            printDeleteProductBasketAll(productInformation, productDelete);
+            productDelete = "apple";
+            System.out.println(" \n2.6 Удалим из корзины продукт которого нет в корзине \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
+            printDeleteProductBasket(productInformation, productDelete);
             printTitle("2.7 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
             productInformation.basket.printContentBasket();
             System.out.println("\nУбедились что все методы работают в соответствии с условием.");

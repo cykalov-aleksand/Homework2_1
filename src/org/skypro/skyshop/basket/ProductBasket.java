@@ -31,21 +31,8 @@ public class ProductBasket {
             System.out.printf("%20s%20d%5s\n%20s%5d", "Итого: ", calculateCostBasket(), " руб", "Специальных товаров: ",count);
 
     }
-    public List<Product> deleteProduct(String query) {
-        List<Product> search = new ArrayList<>();
-        if (calculateCostBasket() != 0) {
-            search = products.values().stream().flatMap(Collection::stream).filter((product) -> product.getNameProduct().toLowerCase()
-                    .contains(query.toLowerCase().trim())).findFirst().stream().collect(Collectors.toList());
-            if (!search.isEmpty()) {
-                List<Product> finalSearch = search;
-                Optional.of(search).map(product -> products.get(finalSearch.get(0).getNameProduct())
-                        .remove(products.get(finalSearch.get(0).getNameProduct()).size() - 1));
-            }
-        }
-        return search;
-    }
 
-    public List<Product> deleteProductAll(String query) {
+    public List<Product> deleteProduct(String query) {
         List<Product> search = new ArrayList<>();
         if (calculateCostBasket() != 0) {
             search = products.values().stream().flatMap(Collection::stream).filter((product) -> product.getNameProduct().toLowerCase()
