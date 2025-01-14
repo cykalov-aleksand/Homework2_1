@@ -9,11 +9,9 @@ import org.skypro.skyshop.product.searchengine.SearchEngine;
 import java.util.*;
 
 public class App {
-
     static void printTitle(String title) {
-        int lineLength = 100;
         int headerLength = title.length();
-        int numberOfCharacters = (lineLength - headerLength) / 2;
+        int numberOfCharacters = (100 - headerLength) / 2;
         String completion = "-";
         System.out.println("\n" + completion.repeat(numberOfCharacters) + title + completion.repeat(numberOfCharacters));
     }
@@ -47,11 +45,11 @@ public class App {
 
     static void completeTask2(ProductInformation productInformation, SearchEngine searchEngeni) {
         printTitle("ДОМАШНЕЕ ЗАДАНИЕ Полиморфизм. Интерфейсы");
-        System.out.println("1. Создали один объект типа SearchEngine c пустым списком ");
-        System.out.println("Итого: мы имеем список размерностью изначально равной " + searchEngeni.getSearchable().size());
-        System.out.println("2. Привели тип объекта products к типу Searhable  и занесли элементы в объект searchEngeni  ");
+        printTitle("1. Создали один объект типа SearchEngine c пустым списком ");
+        printTitle("Итого: мы имеем список размерностью изначально равной " + searchEngeni.getSearchable().size());
+        printTitle("2. Привели тип объекта products к типу Searhable  и занесли элементы в объект searchEngeni  ");
         searchEngeni.add(productInformation.products);
-        System.out.println("3. Занесли объекты article в объект searchEngeni  ");
+        printTitle("3. Занесли объекты article в объект searchEngeni  ");
         searchEngeni.add(productInformation.articles);
         printTitle("4. Проводим проверку заполнения объекта searchEngeni");
         for (Searchable x : searchEngeni.getSearchable()) {
@@ -64,7 +62,7 @@ public class App {
         demonstrateTheMethod(searchEngeni, searchOption1);
         printTitle("6. Продемонстрировали функциональность поиска при вводе строки - " + searchOption2 + " ");
         demonstrateTheMethod(searchEngeni, searchOption2);
-        System.out.println("7. Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 + ", на предмет полного заполнения массива поиска \n");
+        System.out.println("7. Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 + ", на предмет полного заполнения\n массива поиска \n");
         demonstrateTheMethod(searchEngeni, searchOption3);
     }
 
@@ -73,13 +71,13 @@ public class App {
         String searchOption5 = "apple";
         printTitle("ДОМАШНЕЕ ЗАДАНИЕ Исключение в JAVA");
         System.out.println("1. В классы Product и его наследники ввели проверку корректности ввода данных в объекты.");
-        System.out.println("2. Провели демонстрацию корректности ввода данных без ошибки для удобства проверки данных при вводе ошибки в программу.");
+        System.out.println("2. Провели демонстрацию корректности ввода данных без ошибки для удобства проверки данных при вводе\n ошибки в программу.");
         productInformation.printProductsInStore();
-        System.out.println("3. 4. Реализовали метод getSearchTerm(String search) в классе Searchable и создали исключение BestResultNotFound. ");
-        printTitle("5.1 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption4);
+        System.out.println("3. 4. Реализовали метод getSearchTerm(String search) в классе Searchable и создали исключение\n BestResultNotFound. ");
+        System.out.println("5.1 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption4);
         System.out.println();
         demonstrateTheMethod2(searchEngeni, searchOption4);
-        printTitle("5.2 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption5);
+        System.out.println("5.2 Продемонстрируем метод getSearchTerm(String search) когда строка имеет значение - " + searchOption5);
         System.out.println();
         demonstrateTheMethod2(searchEngeni, searchOption5);
 
@@ -101,32 +99,33 @@ public class App {
             System.out.println("Добавили " + (element + 1) + " продукт: " + productBasket.get(element));
             productInformation.searchProductAddBasket(productBasket.get(element));
         }
-        System.out.println("2. Добавили метод public deleteProduct(String line), который по переданному имени продукта удаляет все" +
+        System.out.println("2. Добавили метод public deleteProduct(String line), который по переданному имени продукта удаляет\n все" +
                 " продукты с таким именем из корзины");
-        printTitle("2.1 Продемонстрируем работу метода. Для этого распечатаем содержимое корзины.");
+        System.out.println("2.1 Продемонстрируем работу метода. Для этого распечатаем содержимое корзины.");
         productInformation.basket.printContentBasket();
         System.out.println();
         String productDelete = "молоко";
         System.out.println("\n 2.1 Удалим из корзины один продукт \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
         printDeleteProductBasket(productInformation, productDelete);
-        printTitle("2.2. Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
+        System.out.println("2.2. Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
         productInformation.basket.printContentBasket();
         productDelete = "пенt для бритья";
         System.out.println("\n 2.3 Удалим из корзины продукт введенный с ошибкой \" "
-                + productDelete + "\" и выведем в консоль удаленные продукты с корзины.\n");
+                + productDelete + "\" и выведем в консоль удаленные\n продукты с корзины.\n");
         printDeleteProductBasket(productInformation, productDelete);
         printTitle("2.4. Вывели содержимое корзины на экран.");
         productInformation.basket.printContentBasket();
         searchEngeni.clearSearchEngine();
-        System.out.println("\n3. Продемонстрируем использование измененного метода search " +
-                "для чего повторим вывод домашнего задания \"Полиморфизм. Интерфейсы.\" на печать");
+        System.out.println("""
+                
+                3. Продемонстрируем использование измененного метода search \
+                для чего повторим вывод домашнего задания
+                 "Полиморфизм. Интерфейсы." на печать""");
         System.out.println("Для повторного корректного выполнения домашнего задания \"Полиморфизм. Интерфейсы.\" " +
-                "произвел предварительно очистку списка объекта searchEngine дополнительным методом clearSearchEngine()  ");
+                "произвелn\n предварительно очистку списка объекта searchEngine дополнительным методом clearSearchEngine()  ");
         searchEngeni.clearSearchEngine();
         completeTask2(productInformation, searchEngeni);
         System.out.println("\nУбедились что программа отрабатывает согласно условия задания.");
-
-
     }
 
     static void completeTask5(ProductInformation productInformation, SearchEngine searchEngeni) {
@@ -136,7 +135,7 @@ public class App {
         System.out.println(" 1.1 Произвели изменения в классе ProductBasket заменили тип переменной products на\n" +
                 "тип: Map<String, ArrayList<Product>> ");
         System.out.println("Для контроля корректности работы класса ProductBasket выведем на консоль" +
-                " условия работы домашнего задания \"Введение в ООП. Инкапсуляция\" ");
+                " условия работы домашнего\n задания \"Введение в ООП. Инкапсуляция\" ");
         completeTask1(productInformation);
         System.out.println();
         System.out.println("1.2 Продемонстрировали работу класса за исключением удаления продукта с корзины. Произведем данную проверку.\n");
@@ -147,20 +146,60 @@ public class App {
         String productDelete = "конфеты";
         System.out.println("\n 1.5 Удалим из корзины один продукт \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
         printDeleteProductBasket(productInformation, productDelete);
-        printTitle("1.6 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
+        System.out.println("1.6 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
         productInformation.basket.printContentBasket();
-        printTitle("2. Модификация возвращаемого значения в методе поиска");
+        System.out.println("2. Модификация возвращаемого значения в методе поиска");
         System.out.println("Продемонстрируем работу метода search");
         String searchOption1 = "хлеб";
         String searchOption2 = "майонез";
         String searchOption3 = "a";
-        printTitle("2.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 + " ");
+        System.out.println("2.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 + " ");
         demonstrateTheMethod(searchEngeni, searchOption1);
-        printTitle("2.2 Продемонстрировали функциональность поиска при вводе строки - " + searchOption2 + " ");
+        System.out.println("2.2 Продемонстрировали функциональность поиска при вводе строки - " + searchOption2 + " ");
         demonstrateTheMethod(searchEngeni, searchOption2);
         System.out.println("2.3 Продемонстрировали функциональность поиска при вводе строки - " + searchOption3 +
-                ", на предмет сортировки выводимой информации по ключу Set поиска \n");
+                ", на предмет сортировки\n выводимой информации по ключу Set поиска \n");
         demonstrateTheMethod(searchEngeni, searchOption3);
+    }
+
+    static void completeTask6(ProductInformation productInformation) {
+        printTitle("Java Collections Framework: Set");
+        printTitle("1.Произвели замену List на Set в классе SearchEnable.");
+        System.out.println("2. Реализовали equals и hashCode в классах Product  и Article");
+        System.out.println("3. Для демонстрации того, что продуктов и статей с одинаковым именем не существует в объекте класса SearchEngine, ");
+        System.out.println("добавим в массивы данных одинаковые строки \"кетчуп\" в Article и \" и батон нарезной 4 кат.\" в массиве product" + "\n" +
+                "и пройдем по объекту в поиске указанных строк и при наличии выведем в консоль");
+        String controlLine1 = "кетчуп";
+        printTitle(" 3.1 первая проверка по строке " + controlLine1);
+        checkingStringSearhEngine(productInformation.searchEngeni, controlLine1);
+        String controlLine2 = "батон нарезной 4 кат";
+        printTitle(" 3.2 вторая проверка по строке " + controlLine2);
+        checkingStringSearhEngine(productInformation.searchEngeni, controlLine2);
+        System.out.println("Убедились что в консоль выводится информация по одному продукту ");
+        System.out.println("3.3 сравним сумму элементов массивов article и product с количеством элементов в объекте класса SearchEngine");
+        int numberArrays = productInformation.articles.length + productInformation.products.length;
+        System.out.println("Сумма элементов массива article и product равна: " + numberArrays);
+        int numberGetSearhable = productInformation.searchEngeni.getSearchable().size();
+        System.out.println("Количество элементов в объекте класса SearchEngine равно: " + numberGetSearhable);
+        System.out.println("Итого в массивах article и product " + (numberArrays - numberGetSearhable) + " одинаковых строк не вошедших в объект класса SearchEngine.");
+        printTitle("Проверим работу КОМПОРАТОРА");
+        String searchOption1 = "майонез";
+        String searchOption2 = "хлеб";
+        String searchOption3 = "а";
+        System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
+                ", на предмет сортировки\n выводимой информации по ключу Set поиска \n");
+        demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
+        System.out.println("Убедились что фильтрация производится от большего количества строк к меньшему и строки с одинаковым\n количеством элементов сортируются в натуральном порядке");
+        System.out.println("\n4.2 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption2);
+        demonstrateTheMethod(productInformation.searchEngeni, searchOption2);
+        System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption3);
+        demonstrateTheMethod(productInformation.searchEngeni, searchOption3);
+        System.out.println();
+        System.out.println("""
+                В результате демонстрации метода фильтрации по букве "а" наблюдаем, что фильтрация производится
+                 согласно условия задачи.\
+                 Элементы Article выводятся в тех случаях, когда слово встречается в
+                 названии текста статьи, а не названия продукта.""");
     }
 
     static void demonstrateTheMethod(SearchEngine object, String line) {
@@ -177,14 +216,15 @@ public class App {
         }
     }
 
-    static void printDeleteProductBasket(ProductInformation object, String line) {
-        int index = 0;
-        for (Product element : object.basket.deleteProduct(line)) {
-            index++;
-            System.out.println(element);
-        }
-        if (index == 0) {
-            System.out.println("Список пуст, проверьте правильность ввода строки удаления");
+
+    static void printDeleteProductBasket(ProductInformation object, String prduct) {
+        List<Product> arrayDeleteProduct = object.basket.deleteProduct(prduct);
+        if (arrayDeleteProduct.isEmpty())
+            System.out.println("Список пуст, проверьте правильность ввода строки удаления продукта.");
+        else {
+            for (Product element : arrayDeleteProduct) {
+                System.out.println("Продукт: " + element + "\nудален.");
+            }
         }
     }
 
@@ -228,41 +268,27 @@ public class App {
             completeTask3(productInformation, productInformation.searchEngeni);
             completeTask4(productInformation, productInformation.searchEngeni);
             completeTask5(productInformation, productInformation.searchEngeni);
-
-            printTitle("Java Collections Framework: Set");
-            printTitle("1.Произвели замену List на Set в классе SearchEnable.");
-            printTitle("2. Реализовали equals и hashCode в классах Product  и Article");
-            System.out.println("3. Для демонстрации того, что продуктов и статей с одинаковым именем не существует в объекте класса SearchEngine, ");
-            System.out.println("добавим в массивы данных одинаковые строки \"кетчуп\" в Article и \" и батон нарезной 4 кат.\" в массиве product" + "\n" +
-                    "и пройдем по объекту в поиске указанных строк и при наличии выведем в консоль");
-            String controlLine1 = "кетчуп";
-            printTitle(" 3.1 первая проверка по строке " + controlLine1);
-            checkingStringSearhEngine(productInformation.searchEngeni, controlLine1);
-            String controlLine2 = "батон нарезной 4 кат";
-            printTitle(" 3.2 вторая проверка по строке " + controlLine2);
-            checkingStringSearhEngine(productInformation.searchEngeni, controlLine2);
-            System.out.println("Убедились что в консоль выводится информация по одному продукту ");
-            System.out.println("3.3 сравним сумму элементов массивов article и product с количеством элементов в объекте класса SearchEngine");
-            int numberArrays = productInformation.articles.length + productInformation.products.length;
-            System.out.println("Сумма элементов массива article и product равна: " + numberArrays);
-            int numberGetSearhable = productInformation.searchEngeni.getSearchable().size();
-            System.out.println("Количество элементов в объекте класса SearchEngine равно: " + numberGetSearhable);
-            System.out.println("Итого в массивах article и product " + (numberArrays - numberGetSearhable) + " одинаковых строк не вошедших в объект класса SearchEngine.");
-            printTitle("Проверим работу КОМПОРАТОРА");
-            String searchOption1 = "майонез";
-            String searchOption2 = "хлеб";
-            String searchOption3 = "а";
-            System.out.println("\n4.1 Продемонстрировали функциональность поиска при вводе строки - " + searchOption1 +
-                    ", на предмет сортировки выводимой информации по ключу Set поиска \n");
-            demonstrateTheMethod(productInformation.searchEngeni, searchOption1);
-            System.out.println("Убедились что фильтрация производится от большего количества строк к меньшему и строки с одинаковым количеством элементов сортируются в натуральном порядке");
-            System.out.println("\n4.2 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption2);
-            demonstrateTheMethod(productInformation.searchEngeni, searchOption2);
-            System.out.println("\n4.3 Продемонстрируем функциональность поиска при вводе продукта - " + searchOption3);
-            demonstrateTheMethod(productInformation.searchEngeni, searchOption3);
-            System.out.println();
-            System.out.println("В результате демонстрации метода фильтрации по букве \"а\" наблюдаем, что фильтрация производится согласно условия задачи." +
-                    " Элементы Article выводятся в тех случаях, когда слово встречается в названии текста статьи, а не названия продукта.");
+            completeTask6(productInformation);
+            printTitle("ДОМАШНЕЕ ЗАДАНИЕ Stream API и лямбда-выражения");
+            System.out.println("1. Изменили метод search в поисковом движке, результат его работы наблюдаем в пункте 4.3");
+            System.out.println("2. Произвели изменения методов в классе ProductBasket, для проверки работы этих методов выведем на\n консоль домашнее задание с добавлением продуктов в корзину ");
+            completeTask1(productInformation);
+            System.out.println("2.2 Продемонстрировали работу класса за исключением удаления продукта с корзины. Произведем данную проверку.");
+            System.out.println("Для чего, вновь заполним корзину продуктами.\n");
+            initialFillingOfBasket(productInformation);
+            System.out.println("2.3 Выведем на консоль содержимое корзины до удаления товара\n");
+            productInformation.basket.printContentBasket();
+            String productDelete = "конфеты";
+            System.out.println(" \n2.4 Удалим из корзины один продукт \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
+            printDeleteProductBasket(productInformation, productDelete);
+            printTitle("2.5 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
+            productInformation.basket.printContentBasket();
+            productDelete = "Пapple";
+            System.out.println(" \n2.6 Удалим из корзины продукт которого нет в корзине \" " + productDelete + "\" и выведем в консоль удаленные продукты с корзины.");
+            printDeleteProductBasket(productInformation, productDelete);
+            printTitle("2.7 Распечатаем содержимое корзины и убедимся в отсутствии в ней продукта \"" + productDelete + "\"");
+            productInformation.basket.printContentBasket();
+            System.out.println("\nУбедились что все методы работают в соответствии с условием.");
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage() + "  проведите корректировку вводимых данных.");
         } catch (NullPointerException e) {
